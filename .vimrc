@@ -78,3 +78,7 @@ set statusline+=\ %l/%L "current line / total lines
 " No backups and no swap file
 set nobackup
 set noswapfile
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
