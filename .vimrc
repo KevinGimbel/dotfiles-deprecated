@@ -60,6 +60,10 @@ map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 " remove information in which line the non-active file currently is
 
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
 " auto-expand path (opening files like :tabedit %%/)
 cabbr <expr> %% expand('%:p:h')
 " }}}
@@ -78,7 +82,3 @@ set statusline+=\ %l/%L "current line / total lines
 " No backups and no swap file
 set nobackup
 set noswapfile
-
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
