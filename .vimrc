@@ -14,10 +14,8 @@ execute pathogen#infect()
 " light background and hemisu as theme.
 syntax on
 set t_Co=256
-" set background=light
-" colorscheme solarized
-
-colorscheme beekai
+set background=dark
+colorscheme material-theme
 " highlight JSX in all files (not only .jsx)
 let g:jsx_ext_required = 0
 
