@@ -1,7 +1,1 @@
-alias pngopti='~/apps/sh/pngopti.sh'
-alias magerun='magerun.phar'
-alias phpsc='php ~/apps/sh/phpcs.phar'
-alias phpcbf='php ~/apps/sh/phpcbf.phar'
-alias timemachine='~/apps/sh/backup/backup.sh'
-alias tor='cd ~/apps/tor/tor-browser_en-US && ./start-tor-browser'
-alias ws='cd ~/workspace'
+alias m2clear="magerun2 cache:clean && magerun2 cache:flush && magerun2 generation:flush"

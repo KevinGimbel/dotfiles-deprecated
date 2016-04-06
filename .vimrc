@@ -15,7 +15,7 @@ execute pathogen#infect()
 syntax on
 set t_Co=256
 set background=dark
-colorscheme material-theme
+colorscheme colorsbox-material
 " highlight JSX in all files (not only .jsx)
 let g:jsx_ext_required = 0
 
