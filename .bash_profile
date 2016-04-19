@@ -48,6 +48,11 @@ function ws() {
   fi
 }
 
+# quick zip function to create a zip of a directory with the same name
+function qzip() {
+ zip -r $1.zip $1  
+}
+
 # pre exec need to be the last thing!
 # See https://github.com/rcaloras/bash-preexec
  [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
