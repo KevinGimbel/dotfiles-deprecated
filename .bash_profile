@@ -3,11 +3,60 @@
 # "\w" in PS1
 export PROMPT_DIRTRIM=2
 
-# color variables and escaping hell
-green="\[\033[1;92m\]"
-blue="\[\033[1;94m\]"
+# color variables
+green="\[\033[1;32m\]"
+pink="\[\033[1;95m\]"
+blue="\[\033[1;36m\]"
+cyan="\[\033[1;96m\]"
 reset="\[\033[1;0m\]"
+yellow="\[\033[1;33m\]"
 
+ps1_dir="$cyan"
+ps1_project_name="$blue"
+ps1_git_remote="$pink"
+ps1_last_icon="࿊ "
+ps1_git_changes="$yellow"
+ps1_git_untracked="$pink"
+# Needs refactoring
+# _git_remote_status() {
+#   git fetch
+
+#   LOCAL="$(git rev-parse @)"
+#   REMOTE="$(git rev-parse @{u})"
+#   BASE="$(git merge-base @ @{u})"
+
+#   if [ "$LOCAL" = "$REMOTE" ]; then
+#       echo "$green✓$reset"
+#   elif [ "$LOCAL" = "$BASE" ]; then
+#       echo "$green⇊$reset"
+#   elif [ "$REMOTE" = "$BASE" ]; then
+#       echo "$red⇈$reset"
+#   fi
+# }
+
+_git_changed_files() {
+  local changed
+  changed="$(git status -s | grep -c "\sM")"
+  if [ "$changed" -gt "0" ]; then
+    echo -e "$ps1_git_changes⭿ $changed$reset"
+  fi
+}
+
+_git_untracked_files() {
+  local untracked
+  untracked="$(git status -s | grep -c "??")"
+  if [ "$untracked" -gt "0" ]; then
+    echo -e "$ps1_git_untracked✖$untracked$reset|"
+  fi
+}
+
+_git_stats() {
+  local stats
+  stats="$(_git_untracked_files)$(_git_changed_files)"
+  if [ ! -z "$stats" ]; then
+    echo -e "[$stats]"
+  fi
+}
 
 # Git status, this will be printed behind the
 # normal prompt
@@ -27,7 +76,7 @@ _git_prompt() {
   fi
 
   if [ -n "$ref" ]; then
-    echo "[$blue$projectName$reset on $green${ref#refs/heads/}$reset] "
+    echo "[$ps1_project_name$projectName$reset on $ps1_git_remote${ref#refs/heads/}$reset]$(_git_stats) "
   else
     echo "$green\u$reset in "
   fi
@@ -36,15 +85,15 @@ _git_prompt() {
 _build_path() {
   local cur_dir="\w"
   # CUR_DIR_OR_FILE="$(basename $(pwd))"
-  echo "$blue$cur_dir"
+  echo "$ps1_dir$cur_dir"
 }
 
 # Assign the prompt once
-PS1="$(_git_prompt)$(_build_path) $blue \n $blue➜ $reset"
+PS1="$(_git_prompt)$(_build_path) $ps1_dir \n $blue$ps1_last_icon $reset"
 
 # Used to re-build the prompt ➜
 precmd() {
-  PS1="$(_git_prompt)$(_build_path) $blue \n $blue➜ $reset"
+  PS1="$(_git_prompt)$(_build_path) $ps1_dir \n $blue$ps1_last_icon $reset"
 }
 
 # Switch to workspace or directly into a workspace directory if any is found
