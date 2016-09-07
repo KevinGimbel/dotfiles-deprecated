@@ -112,9 +112,27 @@ function ws() {
   fi
 }
 
+#
+# WIP 
+# http://fahdshariff.blogspot.de/2011/04/writing-your-own-bash-completion.html
+# _wsComplete() {
+#  local cur=${COMP_WORDS[COMP_CWORD]}
+#  COMPREPLY=( $(compgen -W "$(find /home/kevin/workspace  \ -maxdepth 2 \ 
+#  -type d -exec basename {} \;)" -- $cur) )
+# }
+# complete -F _wsComplete ws
+#
+# END WIP
+#
+
 # quick zip function to create a zip of a directory with the same name
 function qzip() {
  zip -r "$1.zip" "$1"
+}
+
+# Create Calltracker URLs from git branches
+function branch-calls() {
+  git branch | awk -F'[^0-9]*' '$0=$2' | while read line; do echo "https://synoa.plan.io/issues/$line";  done
 }
 
 # pre exec need to be the last thing!

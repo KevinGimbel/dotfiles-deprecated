@@ -35,10 +35,10 @@ set number
 
 " Write settings {{{
 set tabstop=2
-set shiftwidth=1
+set shiftwidth=2
 set expandtab
-set backspace=indent,eol,start
 set smartindent
+set backspace=indent,eol,start
 set formatoptions+=t " wikia said I need this
 set tw=80 
 set colorcolumn=160 " adds a ruler to the right side of Vim
