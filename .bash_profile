@@ -14,7 +14,7 @@ yellow="\[\033[1;33m\]"
 ps1_dir="$cyan"
 ps1_project_name="$blue"
 ps1_git_remote="$pink"
-ps1_last_icon="࿊ "
+ps1_last_icon="λ "
 ps1_git_changes="$yellow"
 ps1_git_untracked="$pink"
 # Needs refactoring
@@ -137,4 +137,4 @@ function branch-calls() {
 
 # pre exec need to be the last thing!
 # See https://github.com/rcaloras/bash-preexec
- [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+# [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
