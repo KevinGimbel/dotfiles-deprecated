@@ -6,6 +6,9 @@ execute pathogen#infect()
 
 call plug#begin()
 Plug 'fatih/vim-go'
+Plug 'nanotech/jellybeans.vim'
+Plug 'emmet-vim'
+Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 " Auto-load NERDTree
@@ -18,7 +21,7 @@ call plug#end()
 " light background and hemisu as theme.
 syntax enable
 set t_Co=256
-colorscheme molokai
+colorscheme jellybeans
 " highlight JSX in all files (not only .jsx)
 let g:jsx_ext_required = 0
 let g:rehash256 = 1
@@ -86,13 +89,16 @@ nmap <Leader>n :NERDTreeFocus <Enter>
 
 " Status Line {{{
 set ls=2 " always show statusline
-set statusline=%f " show current file
+
+set statusline=[%f] " show current file
+set statusline+=[%{''.(&fenc!=''?&fenc:&enc).''}] " file encoding
+
 " %= align the text to the right
 set statusline+=%=
-set statusline+=%{''.(&fenc!=''?&fenc:&enc).''} " file encoding
-set statusline+=\ \ "space
-set statusline+=%c 
-set statusline+=\ %l/%L "current line / total lines
+
+set statusline+=[%c: " column number 
+set statusline+=\%l/%L] "current line / total lines
+set statusline+=[%n] " Buffer number
 " }}}
 
 " No backups and no swap file
