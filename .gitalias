@@ -1,0 +1,11 @@
+# USAGE:
+# Include this file into your shell init file, e.g. .zshrc, .bash_profile OR
+# load it into an alias file such as .aliases
+
+# custom functions
+function current_branch() {
+  echo $(git branch | grep \* | awk -F' ' '{ print $2 }')
+}
+
+# Aliases
+alias gcb="current_branch"

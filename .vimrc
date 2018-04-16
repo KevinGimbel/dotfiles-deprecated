@@ -1,5 +1,6 @@
 " vim:fdm=marker
 set nocompatible
+set clipboard=unnamed
 " Plugins {{{
 " Enable Pathogen to manage plugins
 execute pathogen#infect()
