@@ -1,30 +1,30 @@
-#~/dotfiles
+# dotfiles
+This repository is a backup of some of my dotfiles. In the past it has not been maintained well but I hope to change that!
 
-Here I store all my dotfiles, so may others will judge me or call me a n00b.
+I am currently using Bash 4.4.19 on Mac OS with [iTerm 2](https://www.iterm2.com/).
 
-Help and improvments always appreciated.
 
-## Usage
-How I am using and storing files at the moment. "Simply" symlinkin' the files to
-the home directory.
+## Setup
+Clone the repository and link the file(s) to your $HOME directory.
 
 ```sh
 $ cd ~
 $ git clone git@github.com:kevingimbel/dotfiles.git
-$ ln -s dotfiles/.zshrc .
+$ ln -s dotfiles/.bash_prompt .
 ```
 
-## .aliases
-Since I'm switching between `bash` and `zsh` some times I figured putting my aliases inside a `.aliases` file and including this file is not a bad idea.
+### Functions
 
-## oh-my-zsh
-The oh-my-zsh folder holds all customizations I made for the [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
+#### `ws`
 
-## vim/nvim
-`.vimrc` and `.nvimrc` are mostly the same. I use [neovim](http://neovim.org) every now and then instead of vim to see how development goes.
+`ws` is a function to quickly change the directory into some directory under in my workspace. If I want to go into the directory of the customer XY I'd type `ws xy` - the default settings work for my setup but you may need to change them.
 
-## local/bin
-Holds some shell scripts (or better "helpers") that I use every now and then. Most important is `startenv` which is a short code for
-```sh
-sudo service apache2 start && sudo service mysql start
-```
+The script uses two config variables:
+
+`WS_DEPTH` is the depth used for `find`, which is used to find a matching directory. The default is 3, add `export WS_DEPTH=4` to `.bash_profile` (or similar) to change it to 4.
+
+`WS_WORKSPACE` is the root workspace directory, in my case `~/Development`. To change it, add `export WS_WORKSPACE=/path/to/your/workspace` to `.bash_profile` (or similar).
+
+### Prompt
+
+The prompt is taken from [Jess Frazelle](https://github.com/jessfraz/dotfiles). It fits my requirements very well and has git integration. The only adjustment so far is the removal of the host because I don't need it.
