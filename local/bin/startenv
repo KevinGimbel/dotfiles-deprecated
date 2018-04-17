@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo "Starting Webserver and MySQL"
-# Start Apache
-sudo service apache2 start
-# Start MySQL
-sudo service mysql start
-echo "Everything started. Hard work is happy work!"
